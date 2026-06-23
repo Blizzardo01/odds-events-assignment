@@ -1,4 +1,6 @@
 const number_bank = [];
+const odds_bank = [];
+const evens_bank = [];
 
 
 function add_number(n) {
@@ -7,11 +9,31 @@ function add_number(n) {
 }
 
 function sort1_number() {
+    let shifted_num = 0;
+    const odds = document.querySelector("#odds");
+    const evens = document.querySelector("#evens");
 
+    shifted_num = number_bank.shift();
+
+    if (shifted_num % 2 === 0) {
+        evens_bank.push(shifted_num);
+    } else {
+        odds_bank.push(shifted_num);
+    }
+    render();
 }
 
 function sort_all() {
-
+    for (let i = 0; i < number_bank.length; i++) {
+        if (number_bank[i] % 2 === 0) {
+            evens_bank.push(number_bank[i]);
+            delete number_bank[i];
+        } else {
+            odds_bank.push(number_bank[i]);
+            delete number_bank[i];
+        }
+    }
+    render();
 }
 
 function BankofNumbers() {
@@ -22,10 +44,17 @@ function BankofNumbers() {
 
 }
 
-function Numbers(array, type) {
+function Numbers(type) {
+    const odds = document.createElement("h1");
+    const evens = document.createElement("h1");
 
-
-    return;
+    if (type === "odds") {
+        odds.textContent = odds_bank.join(" ");
+        return odds;
+    } else if (type === "evens") {
+        evens.textContent = evens_bank.join(" ");
+        return evens;
+    }
 }
 
 
@@ -88,8 +117,8 @@ function render() {
     `;
     app.querySelector("BankForm").replaceWith(BankForm());
     app.querySelector("BankofNumbers").replaceWith(BankofNumbers());
-    app.querySelector("Numbers#odds").replaceWith(Numbers(number_bank, "odds"));
-    app.querySelector("Numbers#evens").replaceWith(Numbers(number_bank, "evens"));
+    app.querySelector("Numbers#odds").replaceWith(Numbers("odds"));
+    app.querySelector("Numbers#evens").replaceWith(Numbers("evens"));
 }
 
 render();
