@@ -37,24 +37,43 @@ function sort_all() {
 }
 
 function BankofNumbers() {
+    const container = document.createElement("section");
+    container.id = "number-bank";
+
+    const label = document.createElement("h2");
+    label.textContent = "Number Bank";
+    
     const bank = document.createElement("h1");
+
     bank.textContent = number_bank.join(" ");
-    console.log(number_bank);
-    return bank;
+
+    container.append(label, bank);
+
+    return container;
 
 }
 
 function Numbers(type) {
-    const odds = document.createElement("h1");
-    const evens = document.createElement("h1");
+    const container = document.createElement("section");
+
+    const label = document.createElement("h2");
+    const numbers = document.createElement("p");
 
     if (type === "odds") {
-        odds.textContent = odds_bank.join(" ");
-        return odds;
-    } else if (type === "evens") {
-        evens.textContent = evens_bank.join(" ");
-        return evens;
+        container.id = "odds";
+        label.textContent = "Odds";
+        numbers.textContent = odds_bank.join(" ");
     }
+
+    if (type === "evens") {
+        container.id = "evens";
+        label.textContent = "Evens";
+        numbers.textContent = evens_bank.join(" ");
+    }
+
+    container.append(label, numbers);
+
+    return container;
 }
 
 

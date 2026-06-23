@@ -1,0 +1,32 @@
+#number-bank,
+#odds,
+#evens {
+  padding: 1rem;
+  border-radius: 15px;
+  margin: 1rem auto;
+  width: 80%;
+}
+
+#number-bank {
+  background: #eeeaff;
+}
+
+#odds {
+  background: #ffe5e5;
+  color: #b22222;
+}
+
+#evens {
+  background: #e2f0ff;
+  color: #0057b8;
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+section p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
